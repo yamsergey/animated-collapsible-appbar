@@ -20,6 +20,8 @@ internal class AnimatedCollapsibleAppBar @JvmOverloads constructor(
     private val openConstraintSet = ConstraintSet()
     private val closeConstraintSet = ConstraintSet()
 
+    private lateinit var initialConstraint: ConstraintSet
+
     init {
         val attrsArray = context.obtainStyledAttributes(
                 attrs,
@@ -34,10 +36,6 @@ internal class AnimatedCollapsibleAppBar @JvmOverloads constructor(
                     R.layout.animated_collapsible_appbar_default_opened
             )
 
-            if (openedResourceId == R.layout.animated_collapsible_appbar_default_opened) {
-                openConstraintSet.clone(this)
-            }
-
             closedResourceId = attrsArray.getResourceId(
                     R.styleable.AnimatedCollapsibleAppBar_collapsed_template,
                     R.layout.animated_collapsible_appbar_default_collapsed
@@ -49,11 +47,19 @@ internal class AnimatedCollapsibleAppBar @JvmOverloads constructor(
     }
 
     override fun onAttachedToWindow() {
+        if (!this::initialConstraint.isInitialized) initialConstraint = ConstraintSet().apply { clone(this) }
+
         super.onAttachedToWindow()
         if (parent is AppBarLayout) {
             val appBarLayout = parent as AppBarLayout
             appBarLayout.addOnOffsetChangedListener(this)
-            if (openedResourceId != R.layout.animated_collapsible_appbar_default_opened) openConstraintSet.clone(context, openedResourceId)
+            openConstraintSet.apply {
+                if (openedResourceId == R.layout.animated_collapsible_appbar_default_opened) {
+                    openConstraintSet.clone(initialConstraint)
+                } else {
+                    clone(context, openedResourceId)
+                }
+            }
             closeConstraintSet.clone(context, closedResourceId)
         }
     }
