@@ -34,6 +34,10 @@ internal class AnimatedCollapsibleAppBar @JvmOverloads constructor(
                     R.layout.animated_collapsible_appbar_default_opened
             )
 
+            if (openedResourceId == R.layout.animated_collapsible_appbar_default_opened) {
+                openConstraintSet.clone(this)
+            }
+
             closedResourceId = attrsArray.getResourceId(
                     R.styleable.AnimatedCollapsibleAppBar_collapsed_template,
                     R.layout.animated_collapsible_appbar_default_collapsed
@@ -49,7 +53,7 @@ internal class AnimatedCollapsibleAppBar @JvmOverloads constructor(
         if (parent is AppBarLayout) {
             val appBarLayout = parent as AppBarLayout
             appBarLayout.addOnOffsetChangedListener(this)
-            openConstraintSet.clone(context, openedResourceId)
+            if (openedResourceId != R.layout.animated_collapsible_appbar_default_opened) openConstraintSet.clone(context, openedResourceId)
             closeConstraintSet.clone(context, closedResourceId)
         }
     }
