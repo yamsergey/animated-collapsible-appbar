@@ -46,10 +46,10 @@ internal class AnimatedCollapsibleAppBar @JvmOverloads constructor(
         }
     }
 
-    override fun onAttachedToWindow() {
-        if (!this::initialConstraint.isInitialized) initialConstraint = ConstraintSet().apply { clone(this) }
 
+    override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+        if (!this::initialConstraint.isInitialized) initialConstraint = ConstraintSet().apply { clone(this@AnimatedCollapsibleAppBar) }
         if (parent is AppBarLayout) {
             val appBarLayout = parent as AppBarLayout
             appBarLayout.addOnOffsetChangedListener(this)
