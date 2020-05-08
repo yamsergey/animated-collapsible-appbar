@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="AnimatedCollapsibleAppBar" tools:ignore="ResourceName">
+        <attr name="collapsed_template" format="string" tools:ignore="ResourceName"/>
+        <attr name="opened_template" format="string" tools:ignore="ResourceName"/>
+    </declare-styleable>
+</resources>
