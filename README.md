@@ -7,7 +7,7 @@ You can achieve this result in few easy steps:
 
 <img src='https://github.com/yamsergey/animated-collapsible-appbar-example/blob/master/app/demo.gif' width=300 />
 
-Example app can be found there https://github.com/yamsergey/animated-collapsible-appbar-example
+The example app is there https://github.com/yamsergey/animated-collapsible-appbar-example
 
 ## Known issues
 1. The height of the constraints have to be the same 
@@ -31,3 +31,6 @@ Add dependency
 	        implementation 'com.github.yamsergey:animated-collapsible-appbar:Tag'
 	}
 ```
+
+## How to use
+https://medium.com/@yamsergey/animated-app-bar-with-constraintlayout-d665b0234689
