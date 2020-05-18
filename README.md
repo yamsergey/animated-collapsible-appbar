@@ -28,7 +28,7 @@ Add Jitpack repo
 Add dependency
 ```
 	dependencies {
-	        implementation 'com.github.yamsergey:animated-collapsible-appbar:Tag'
+	        implementation 'com.github.yamsergey:animated-collapsible-appbar:1.0.0'
 	}
 ```
 
