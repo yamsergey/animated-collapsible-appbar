@@ -12,3 +12,22 @@ Example app can be found there https://github.com/yamsergey/animated-collapsible
 ## Known issues
 1. The height of the constraints have to be the same 
 2. Doesn't work really well in all situations with DataBinding (There are some work arounds)
+
+## How to install
+
+Add Jitpack repo
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+Add dependency
+```
+	dependencies {
+	        implementation 'com.github.yamsergey:animated-collapsible-appbar:Tag'
+	}
+```
